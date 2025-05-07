@@ -1,0 +1,43 @@
+# Bytecode de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entornos virtuales
+.venv/
+env/
+venv/
+
+# Archivos de configuración locales
+*.env
+.env.*
+
+# Archivos de log o salida
+*.log
+
+# Archivos temporales y del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de cache
+.cache/
+*.bak
+*.tmp
+
+# Archivos de exportación generados (Excel, JSON, etc.)
+*.xlsx
+*.xls
+*.json
+
+# Configuración del editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Otros
+dist/
+build/
+*.egg-info/
+*.egg
+*.zip

@@ -1,9 +1,3 @@
-import sys
-import os
-
-# Agregar el directorio raíz del proyecto al PYTHONPATH
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
 import tkinter as tk
 from mipres_tool.handlers.juntas_medicas import ejecutar_descarga_juntas_gui
 from mipres_tool.handlers.prescripciones import ejecutar_descarga_prescripcion_gui
