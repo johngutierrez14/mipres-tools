@@ -73,6 +73,13 @@ pip install -r requirements.txt
 ```
 
 ---
+### ⚙️ Configuración del entorno
+Antes de ejecutar la herramienta, asegúrate de crear un archivo .env en la raíz del proyecto con las siguientes variables de entorno:
+
+API_URL_JUNTA_MEDICA=https://wsmipres.sispro.gov.co/WSMIPRESNOPBS/api/JuntaProfesionalXFecha
+API_URL_PRESCRIPCION=https://wsmipres.sispro.gov.co/WSMIPRESNOPBS/api/Prescripcion
+TOKEN=tu_token_de_acceso
+NIT=tu_nit
 
 ## ▶️ Ejecución
 
