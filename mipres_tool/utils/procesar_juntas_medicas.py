@@ -35,6 +35,7 @@ def procesar_juntas_medicas(folder_path):
 
     if juntasMedicas_data:
         df = pd.DataFrame(juntasMedicas_data)
+        df = df[df['EPS'] != "EPS"]
         output_file = os.path.join(folder_path, "junta_medica.xlsx")
         df.to_excel(output_file, index=False)
         return output_file
