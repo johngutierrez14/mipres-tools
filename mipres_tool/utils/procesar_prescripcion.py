@@ -39,7 +39,13 @@ def procesar_prescripciones(folder_path):
 
     if prescripcion_data:
         df = pd.DataFrame(prescripcion_data)
-        output_file = os.path.join(folder_path, "Prescripcion.xlsx")
+        
+        # Elimina filas completamente vacías
+        df = df.dropna(subset=['No Prescripcion'])
+        df = df[df['No Prescripcion'].str.strip() != '']
+        df = df.dropna(how='all')
+        
+        output_file = os.path.join(folder_path, "Prescripciones Actuales.xlsx")
         df.to_excel(output_file, index=False)
         return output_file
     return None

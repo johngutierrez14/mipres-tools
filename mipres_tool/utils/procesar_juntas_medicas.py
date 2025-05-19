@@ -35,8 +35,9 @@ def procesar_juntas_medicas(folder_path):
 
     if juntasMedicas_data:
         df = pd.DataFrame(juntasMedicas_data)
-        df = df[df['EPS'] != "EPS"]
-        output_file = os.path.join(folder_path, "junta_medica.xlsx")
+        # Eliminar filas que contenga en la columna EPS el valor 'EPS' o 'ESS'
+        df = df[~df['EPS'].isin(['EPS', 'ESS'])]
+        output_file = os.path.join(folder_path, "Junta Medica Actuales.xlsx")
         df.to_excel(output_file, index=False)
         return output_file
     return None
