@@ -1,3 +1,4 @@
+reconstruir : pyinstaller --onefile --windowed mipres_tool/mipres-tools.py
 
 # mipres-tools 🛠️📄
 

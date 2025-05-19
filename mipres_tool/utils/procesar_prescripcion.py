@@ -4,6 +4,8 @@ import pandas as pd
 
 def procesar_prescripciones(folder_path):
     prescripcion_data = []
+    # Conjunto para garantizar valores únicos en 'Consecutivo ID'
+    consecutivo_ids_unicos = set()
     for filename in os.listdir(folder_path):
         if filename.endswith('.json'):
             file_path = os.path.join(folder_path, filename)
@@ -12,8 +14,20 @@ def procesar_prescripciones(folder_path):
                     contenido_json = json.load(f)
                     for item in contenido_json:
                         prescripcion = item.get('prescripcion', {})
+                        # Divide 'NoPrescripcion' en partes
+                        no_prescripcion = prescripcion.get('NoPrescripcion', '')
+                        AñoCreacion = no_prescripcion[:4]  # Los primeros 4 caracteres
+                        MesCreacion = no_prescripcion[4:6]  # Los siguientes 2 caracteres
+                        DiaCreacion = no_prescripcion[6:8]  # Los siguientes 2 caracteres
+                        ConsecutivoID = no_prescripcion[8:]  # Los caracteres restantes
+                        
+                        # Verificar si el 'Consecutivo ID' ya existe
+                        if ConsecutivoID not in consecutivo_ids_unicos:
+                            consecutivo_ids_unicos.add(ConsecutivoID)  # Agregar al conjunto
+                        
                         prescripcion_data.append({
-                            'No Prescripcion': prescripcion.get('NoPrescripcion', ''),
+                            'No Prescripcion': no_prescripcion,
+                            'Fecha creacion': f"{AñoCreacion}-{MesCreacion}-{DiaCreacion}",
                             'Fecha Prescripcion': prescripcion.get('FPrescripcion', ''),
                             'Hora Prescripcion': prescripcion.get('HPrescripcion', ''),
                             'CodHabIPS': prescripcion.get('CodHabIPS', ''),
